@@ -6,7 +6,16 @@ const cors = require('cors');
 dotenv.config();
 connectDB();
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://preview--manscara-color-commerce-40.lovable.app',
+    'https://manscara-color-commerce-40.lovable.app'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  exposedHeaders: ['Authorization'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Import routes
